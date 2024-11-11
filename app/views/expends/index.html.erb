@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <style>
+    body {
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 50px;
+      background: linear-gradient(to right, #6a11cb, #2575fc); 
+      font-family: Arial, sans-serif; /* Font for the whole page */
+      color: #333; /* Default text color */
+  }
+  
+  h1 {
+      text-align: center; /* Center the heading */
+      color: #6a11cb; /* White color for the heading */
+      margin-bottom: 2rem; /* Space below the heading */
+      font-size: 2.5rem; /* Increased font size for the heading */
+      font-weight: bold; /* Bold font weight */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  }
+  
+  .container {
+      max-width: 800px; /* Max width for the container */
+      margin: 0 auto; /* Center the container */
+      padding: 2rem; /* Padding around the container */
+     background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+      text-align: center; /* Center text within the container */
+  }
+  
+  .expense-link {
+      display: block; /* Block display for links */
+      padding: 1rem; /* Padding for links */
+      margin: 0.5rem 0; /* Margin for spacing */
+      color: #6a11cb; /* Vibrant purple color for links */
+      text-decoration: none; /* Remove underline */
+      border: 2px solid transparent; /* Transparent border for hover effect */
+      border-radius: 5px; /* Rounded corners */
+      transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+  }
+  
+  .expense-link:hover {
+      background-color: rgba(106, 17, 203, 0.1); /* Light purple on hover */
+      border-color: #6a11cb; /* Border color on hover */
+  }
+  
+ 
+  .button {
+      margin-top: 1.5rem; /* Space above the home button */
+      width: 100%;
+      background-color: #6a11cb; 
+      color: white; /* White text */
+      text-align: center; 
+      padding: 0.75rem ; /* Padding for the button */
+      border-radius: 5px; /* Rounded corners for button */
+      border: none; /* No border */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s; /* Smooth transition */
+      display: inline-block; /* Inline display */
+  }
+  
+  .logout-button:hover {
+      background-color: #e65c50; /* Darker coral color on hover */
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Expenses</h1>
+
+        <% @expends.each do |expend| %>
+            <p>
+                <%= link_to expend.description, expend, class: "expense-link" %>
+            </p>
+        <% end %>
+
+        <%= button_to "New expense", new_expend_path, method: :get,class: "button" %>
+        
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "button" %>
+    </div>
+</body>
+</html>

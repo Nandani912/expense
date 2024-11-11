@@ -1,0 +1,105 @@
+<style>
+body {
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+  background: linear-gradient(to right, #6a11cb, #2575fc); 
+  font-family: Arial, sans-serif; /* Font for the whole page */
+  color: #333; /* Default text color */
+}
+
+.container {
+    margin-top: 3rem; /* Space from the top */
+    padding: 2rem; 
+}
+
+.card {
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 2rem; /* Padding inside the card */
+}
+
+table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 1rem; /* Space above the table */
+}
+
+th, td {
+    padding: 1rem; /* Padding inside table cells */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+
+th {
+    background-color: #6a11cb; /* Purple background for table headers */
+    color: white; /* White text for headers */
+}
+
+tr:hover {
+    background-color: rgba(106, 17, 203, 0.1); /* Light purple background on row hover */
+}
+
+button {
+    color: #6a11cb; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 0.5rem 1rem; /* Padding for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+    margin-right: 0.5rem; /* Space between buttons */
+}
+
+button:hover {
+    background-color: #2575fc; 
+}
+
+button .btn-delete {
+    background-color: #ff6f61; 
+}
+
+button .btn-delete:hover {
+    background-color: #e65c50; 
+}
+
+button .btn-edit {
+    background-color: #ff6f61;
+}
+button .btn-edit:hover {
+    background-color:#e65c50; 
+}
+</style>
+
+<body>
+<div class="container mt-5">
+  <div class="card p-4 shadow">
+  <h2 class="text-center">Expense List</h2> <!-- Optional heading for clarity -->
+  <div class="table-container">
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @expend.description %></td>
+      <td><%= @expend.amount %></td>
+      <td><%= @expend.date %></td>
+      <td>
+        <button class='btn-edit'><%= link_to "Edit", edit_expend_path(@expend) %></button>
+        <button class='btn-delete'>
+          <%= link_to "Destroy", expend_path(@expend), data: { turbo_method: :delete } %>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%= button_to "home", expends_path, method: :get %>
+</div>
+</div>
+</body>

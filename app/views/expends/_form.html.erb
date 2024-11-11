@@ -1,0 +1,90 @@
+<style>
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+    font-family: Arial, sans-serif; /* Font for the whole page */
+    color: #333; /* Default text color */
+}
+h1 {
+    text-align: center; /* Center the heading */
+    color: #ffffff; /* White color for the heading */
+    margin-bottom: 2rem; /* Space below the heading */
+    font-size: 2.5rem; /* Increased font size for the heading */
+    font-weight: bold; /* Bold font weight */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin-top: 1rem; /* Space above the form */
+}
+
+form div {
+    margin-bottom: 1rem; /* Space between form fields */
+    width: 100%; /* Full width for form fields */
+    max-width: 400px; /* Max width for form fields */
+}
+
+form label {
+    display: block; /* Block display for labels */
+    margin-bottom: 0.5rem; /* Space below labels */
+    color: #333; /* Dark color for labels */
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"] {
+    width: 100%; /* Full width for input fields */
+    padding: 0.5rem; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size for inputs */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus {
+    border-color: #6a11cb; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+form input[type="submit"] {
+    background-color: #6a11cb; /* Vibrant purple color for submit button */
+    color: white; /* White text */
+    padding: 0.75rem 1.5rem; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners for button */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+form input[type="submit"]:hover {
+    background-color: #2575fc; /* Change to a brighter blue on hover */
+}
+
+</style>
+<body>
+<div class="container">
+
+    <%= form_with model: @expend do |form| %>
+        <form>
+            <div>
+                <%= form.label :description %>
+                <%= form.text_field :description %>
+            </div>
+            <div>
+                <%= form.label :amount %>
+                <%= form.number_field :amount %>
+            </div>
+            <div>
+                <%= form.label :date %>
+                <%= form.date_field :date %>
+            </div>
+            <div>
+                <%= form.submit "Add Expense" %>
+            </div>
+        </form>
+    <% end %>
+</div>
+</body>
